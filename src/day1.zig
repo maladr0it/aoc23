@@ -1,9 +1,12 @@
+// https://adventofcode.com/2023/day/1
+
 const std = @import("std");
 
 pub fn p1() i32 {
-    var data = @embedFile("data/day1.txt");
+    const data = @embedFile("data/day1.txt");
+
     var sum: i32 = 0;
-    var line_it = std.mem.tokenize(u8, data, "\n");
+    var line_it = std.mem.splitScalar(u8, data, '\n');
 
     while (line_it.next()) |line| {
         for (0..line.len) |i| {
@@ -26,16 +29,15 @@ pub fn p1() i32 {
 }
 
 pub fn p2() i32 {
-    var data = @embedFile("data/day1.txt");
-    var sum: usize = 0;
-    var line_it = std.mem.tokenize(u8, data, "\n");
-
+    const data = @embedFile("data/day1.txt");
     const digits = [_][]const u8{ "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+
+    var sum: usize = 0;
+    var line_it = std.mem.splitScalar(u8, data, '\n');
 
     while (line_it.next()) |line| {
         var first_digit: usize = 0;
         var first_digit_pos: usize = std.math.maxInt(usize);
-
         var last_digit: usize = 0;
         var last_digit_pos: usize = 0;
 
@@ -74,8 +76,7 @@ pub fn p2() i32 {
             }
         }
 
-        sum += first_digit * 10;
-        sum += last_digit;
+        sum += first_digit * 10 + last_digit;
     }
 
     return @intCast(sum);
