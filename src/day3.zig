@@ -115,16 +115,13 @@ pub fn p2() !i32 {
                 if (visited[r * width + c]) {
                     continue;
                 }
-
                 if (!std.ascii.isDigit(read_coords(map, width, .{ r, c }))) {
                     continue;
                 }
-
                 visited[r * width + c] = true;
 
                 // find first digit
                 var start_col = @max(c, 1) - 1;
-
                 while (true) {
                     if (!std.ascii.isDigit(read_coords(map, width, .{ r, start_col }))) {
                         start_col += 1;
@@ -146,12 +143,6 @@ pub fn p2() !i32 {
                     }
                     visited[r * width + end_col] = true;
                     end_col += 1;
-                }
-
-                const num_digits = end_col - start_col;
-
-                if (num_digits == 0) {
-                    continue;
                 }
 
                 adjacent_nums_count += 1;
