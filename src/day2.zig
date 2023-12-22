@@ -17,8 +17,7 @@ pub fn p1() !i32 {
 
         var parts = std.mem.splitSequence(u8, line, ": ");
         _ = parts.next() orelse return error.InvalidFormat; // skip over the game name
-        var draws_token = parts.next() orelse return error.InvalidFormat;
-        var draws = std.mem.splitSequence(u8, draws_token, "; ");
+        var draws = std.mem.splitSequence(u8, parts.next() orelse return error.InvalidFormat, "; ");
 
         while (draws.next()) |draw| {
             var red_count: i32 = 0;
