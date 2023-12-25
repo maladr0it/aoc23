@@ -13,4 +13,5 @@ pub fn main() !void {
     // std.debug.print("day3_p1: {!}\n", .{day3.p1()}); // 527144
     // std.debug.print("day3_p2: {!}\n", .{day3.p2()}); // 81463996
     std.debug.print("day4_p1: {!}\n", .{day4.p1()}); // 24733
+    std.debug.print("day4_p2: {!}\n", .{day4.p2()}); // 5422730
 }
